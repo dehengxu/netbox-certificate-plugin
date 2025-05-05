@@ -78,6 +78,7 @@ class Certificate(NetBoxModel):
     wildcard = models.BooleanField(default=False, help_text="Indicates if this is a wildcard certificate")
     issue_date = models.DateField(null=True, blank=True)
     expiration_date = models.DateField()
+    revocation_status = models.BooleanField(default=False, help_text="Indicates if the certificate is revoked")
 
     # Identification and metadata fields
     serial_number = models.CharField(max_length=255, unique=True)
