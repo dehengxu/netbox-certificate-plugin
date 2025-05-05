@@ -178,7 +178,8 @@ class HostnameEditView(generic.ObjectEditView):
         Handle saving the certificate relationships upon form submission.
         """
         instance = self.get_object()
-        form = self.get_form()
+        # form = self.get_form()
+        form = forms.HostnameForm
 
         if form.is_valid():
             # Save the hostname and the certificate relationships
