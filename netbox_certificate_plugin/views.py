@@ -163,30 +163,33 @@ class HostnameEditView(generic.ObjectEditView):
     form = forms.HostnameForm
     template_name = 'netbox_certificate_plugin/hostname_form.html'
 
-    def get_extra_context(self, request, instance):
-        """
-        Pass extra context for certificates related to the hostname.
-        """
-        # Fetch existing certificates related to this hostname via the relationship table
-        related_certificates = instance.certificate_relationships.all().values_list('certificate__id', flat=True)
-        return {
-            'related_certificates': related_certificates
-        }
+    # def get_extra_context(self, request, instance):
+    #     """
+    #     Pass extra context for certificates related to the hostname.
+    #     """
+    #     # Fetch existing certificates related to this hostname via the relationship table
+    #     related_certificates = instance.certificate_relationships.all().values_list('certificate__id', flat=True)
+    #     return {
+    #         'related_certificates': related_certificates
+    #     }
 
-    def post(self, request, *args, **kwargs):
-        """
-        Handle saving the certificate relationships upon form submission.
-        """
-        instance = self.get_object()
-        # form = self.get_form()
-        form = forms.HostnameForm
+    # def post(self, request, *args, **kwargs):
+    #     """
+    #     Handle saving the certificate relationships upon form submission.
+    #     """
+    #     instance = self.get_object()
+    #     # form = self.get_form()
+    #     print(f"args: {args}")
+    #     print(f"kwargs: {kwargs}")
+    #     print(f"request: {request}")
+    #     form = forms.HostnameForm(*kwargs)
 
-        if form.is_valid():
-            # Save the hostname and the certificate relationships
-            form.save()
-            return self.form_valid(form)
-        else:
-            return self.form_invalid(form)
+    #     if form.is_valid():
+    #         # Save the hostname and the certificate relationships
+    #         form.save()
+    #         return self.form_valid(form)
+    #     else:
+    #         return self.form_invalid(form)
 
 class HostnameDeleteView(generic.ObjectDeleteView):
     queryset = models.Hostname.objects.all()

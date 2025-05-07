@@ -8,7 +8,7 @@ class Hostname(NetBoxModel):
     name = models.CharField(max_length=255, unique=True)  # Hostname or FQDN
     tenant = models.ForeignKey(Tenant, on_delete=models.SET_NULL, null=True, blank=True, related_name="hostnames")
     prerequisite_models = (
-        'Certificate'
+        # 'Certificate'
     )
     class Meta:
         ordering = ['name']
@@ -70,7 +70,7 @@ class Certificate(NetBoxModel):
     )
     
     prerequisite_models = (
-        'CertificateAuthority',
+        # 'CertificateAuthority',
     )
     
     common_name = models.CharField(max_length=255, help_text="Common Name (CN)")

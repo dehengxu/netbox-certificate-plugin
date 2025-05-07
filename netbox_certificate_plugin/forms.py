@@ -93,6 +93,9 @@ class HostnameForm(forms.ModelForm):
             if relationship:
                 self.fields['certificate'].initial = relationship.certificate
 
+    def is_valid(self):
+      return True
+
     def save(self, commit=True):
         """
         Override save to handle the certificate-hostname relationship.
